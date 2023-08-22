@@ -14,19 +14,24 @@ import ecommerce.api.exception.EcommerceException;
 import ecommerce.api.service.CartService;
 import ecommerce.api.service.ProductService;
 import ecommerce.api.service.UserService;
+import ecommerce.api.utility.MailConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 
 @Service
 public class CartServiceImpl implements CartService {
+
+    @Autowired
+    JavaMailSender mailSender;
+
+    @Autowired
+    MailConstructor mailConstructor;
     @Autowired
     ProductService productService;
     @Autowired
@@ -119,6 +124,12 @@ public class CartServiceImpl implements CartService {
             order.setProducts(cartItems);
             CustomerOrder order1= orderRepository.save(order);
 
+            try {
+                mailSender.send(mailConstructor.constructOrderConfirmationEmail(user, order, Locale.ENGLISH));
+            }
+            catch(Exception e){
+                System.out.println(e.getMessage());
+            }
             // clear cart's foreign key & set order's foreign key& decrease stock
             cart.get().getCartItems().forEach(cartItem -> {
                 cartItem.setCart(null);

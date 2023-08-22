@@ -32,8 +32,17 @@ export class ProductEditComponent implements OnInit, AfterContentChecked {
                 this.categories = data
             })
         }
-
     }
+
+    handleUpload(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            this.product.productIcon = reader.result as any
+        };
+    }
+
 
     update() {
         this.productService.update(this.product).subscribe(prod => {

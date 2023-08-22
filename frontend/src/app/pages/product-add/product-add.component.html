@@ -4,8 +4,8 @@
         
         <!--Photo-->
         <div class="form-group">
-            <label>Photo Link</label>
-            <input [(ngModel)]="product.productIcon" type="text" class="form-control form-control-lg" id="productIcon"
+            <label>Product Photo</label>
+            <input [(ngModel)]="product.productIcon"  type="file" (change)="handleUpload($event)" class="form-control form-control-lg" id="productIcon"
                    name="productIcon" placeholder="Photo">
         </div>
 

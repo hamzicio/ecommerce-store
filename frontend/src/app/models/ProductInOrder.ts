@@ -23,7 +23,7 @@ export class CartItem {
         this.productStock = productInfo.productStock;
         this.productDescription = productInfo.productDescription;;
         this.productIcon = productInfo.productIcon;
-        this.productCategory = productInfo.productCategory.categoryId;
+        this.productCategory = { categoryId: productInfo.productCategory.categoryId };
         this.count = quantity;
     }
 }

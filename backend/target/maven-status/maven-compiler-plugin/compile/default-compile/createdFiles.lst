@@ -8,6 +8,7 @@ ecommerce/api/repository/CartRepository.class
 ecommerce/api/enums/OrderStatusEnum.class
 ecommerce/api/api/ProductController.class
 ecommerce/api/vo/response/JwtResponse.class
+ecommerce/api/utility/MailConstructor$2.class
 ecommerce/api/service/impl/ProductInOrderServiceImpl.class
 ecommerce/api/service/ProductService.class
 ecommerce/api/security/SpringSecurityConfig.class
@@ -21,10 +22,12 @@ ecommerce/api/exception/EcommerceException.class
 ecommerce/api/service/OrderService.class
 ecommerce/api/repository/ProductCategoryRepository.class
 ecommerce/api/entity/ProductInfo.class
+ecommerce/api/utility/MailConstructor.class
 ecommerce/api/EcommerceApplication$1.class
 ecommerce/api/enums/ProductStatusEnum.class
 ecommerce/api/service/UserService.class
 ecommerce/api/entity/Cart.class
+ecommerce/api/utility/MailConstructor$1.class
 ecommerce/api/api/UserController.class
 ecommerce/api/repository/OrderRepository.class
 ecommerce/api/EcommerceApplication.class

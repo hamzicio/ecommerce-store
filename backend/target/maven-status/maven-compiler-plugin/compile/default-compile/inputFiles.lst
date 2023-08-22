@@ -21,6 +21,7 @@
 /home/hamza/Downloads/Springboot-Project/backend/src/main/java/ecommerce/api/entity/ProductCategory.java
 /home/hamza/Downloads/Springboot-Project/backend/src/main/java/ecommerce/api/security/SpringSecurityConfig.java
 /home/hamza/Downloads/Springboot-Project/backend/src/main/java/ecommerce/api/service/CartService.java
+/home/hamza/Downloads/Springboot-Project/backend/src/main/java/ecommerce/api/utility/MailConstructor.java
 /home/hamza/Downloads/Springboot-Project/backend/src/main/java/ecommerce/api/enums/OrderStatusEnum.java
 /home/hamza/Downloads/Springboot-Project/backend/src/main/java/ecommerce/api/service/impl/CategoryServiceImpl.java
 /home/hamza/Downloads/Springboot-Project/backend/src/main/java/ecommerce/api/entity/User.java

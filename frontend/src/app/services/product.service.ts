@@ -65,7 +65,6 @@ export class ProductService {
 
     create(productInfo: ProductInfo): Observable<ProductInfo> {
         const url = `${apiUrl}/seller/product/new`;
-        productInfo = { ...productInfo, productCategory: { categoryId: +productInfo.productCategory } }
         return this.http.post<ProductInfo>(url, productInfo);
     }
 

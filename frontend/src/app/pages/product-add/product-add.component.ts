@@ -19,7 +19,7 @@ export class ProductAddComponent implements OnInit, AfterContentChecked {
 
     productId: string;
     isEdit = false;
-    categories = [] 
+    categories = []
 
     ngOnInit() {
         this.productService.getAllCategories().subscribe((data) => {
@@ -33,8 +33,18 @@ export class ProductAddComponent implements OnInit, AfterContentChecked {
         this.add();
     }
 
+    handleUpload(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            this.product.productIcon = reader.result as any
+        };
+    }
+
 
     add() {
+        this.product = { ...this.product, productCategory: { categoryId: this.product.productCategory } }
         this.productService.create(this.product).subscribe(prod => {
             if (!prod) throw new Error;
             this.router.navigate(['/seller/product']);

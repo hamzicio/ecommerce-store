@@ -21,7 +21,7 @@ export class ProductInfo {
             this.productStock = productInOrder.productStock;
             this.productDescription = productInOrder.productDescription;
             this.productIcon = productInOrder.productIcon;
-            this.productCategory = productInOrder.productCategory.categoryId;
+            this.productCategory = { categoryId: productInOrder.productCategory.categoryId };
             this.productStatus = 0;
         } else {
             this.productId = '';

@@ -2,6 +2,7 @@ package ecommerce.api.service.impl;
 
 
 import ecommerce.api.entity.CartItem;
+import ecommerce.api.entity.User;
 import ecommerce.api.exception.EcommerceException;
 import ecommerce.api.repository.OrderRepository;
 import ecommerce.api.repository.CartItemRepository;
@@ -13,15 +14,25 @@ import ecommerce.api.entity.ProductInfo;
 import ecommerce.api.enums.OrderStatusEnum;
 import ecommerce.api.enums.ResultEnum;
 import ecommerce.api.service.OrderService;
+import ecommerce.api.utility.MailConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Locale;
 
 
 @Service
 public class OrderServiceImpl implements OrderService {
+
+    @Autowired
+    private JavaMailSender mailSender;
+
+    @Autowired
+    private MailConstructor mailConstructor;
     @Autowired
     OrderRepository orderRepository;
     @Autowired
@@ -85,7 +96,13 @@ public class OrderServiceImpl implements OrderService {
 
         customerOrder.setOrderStatus(OrderStatusEnum.CANCELED.getCode());
         orderRepository.save(customerOrder);
-
+        User user= userRepository.findByEmail(customerOrder.getBuyerEmail());
+        try {
+            mailSender.send(mailConstructor.constructOrderCancelEmail(user, customerOrder, Locale.ENGLISH));
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
         // Restore Stock
         Iterable<CartItem> products = customerOrder.getProducts();
         for(CartItem cartItem : products) {

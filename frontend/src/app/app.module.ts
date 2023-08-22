@@ -26,6 +26,9 @@ import { CategoryEditComponent } from './pages/category-edit/category-edit.compo
 import { CategoryListComponent } from './pages/category-list/category.list.component';
 import { StatsComponent } from './pages/statistics/stats.component';
 import { UserListComponent } from './pages/user-list/user.list.component';
+import { LoadingInterceptor } from './_interceptors/loaderInterceptor.service';
+import { LoadingService } from './services/loadingService';
+import { SpinnerComponent } from './pages/spinner/spinner-component';
 
 @NgModule({
     declarations: [
@@ -47,7 +50,8 @@ import { UserListComponent } from './pages/user-list/user.list.component';
         CategoryEditComponent,
         CategoryListComponent,
         StatsComponent,
-        UserListComponent
+        UserListComponent,
+        SpinnerComponent
     ],
     imports: [
         BrowserModule,
@@ -56,9 +60,10 @@ import { UserListComponent } from './pages/user-list/user.list.component';
         HttpClientModule,
 
     ],
-    providers: [CookieService,
+    providers: [CookieService, LoadingService,
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }],
     bootstrap: [AppComponent]
 })
 export class AppModule {

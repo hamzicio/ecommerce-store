@@ -1,6 +1,8 @@
 package ecommerce.api;
 
+import ecommerce.api.entity.Cart;
 import ecommerce.api.entity.User;
+import ecommerce.api.repository.CartRepository;
 import ecommerce.api.repository.UserRepository;
 import ecommerce.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,9 @@ public class EcommerceApplication {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    CartRepository cartRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(EcommerceApplication.class, args);
     }
@@ -53,7 +58,9 @@ public class EcommerceApplication {
             user.setActive(true);
             user.setRole("ROLE_ADMIN");
             user.setEmail("admin@email.com");
-            userRepository.save(user);
+            User savedUser= userRepository.save(user);
+
+            cartRepository.save(new Cart(savedUser));
         }
     }
 
