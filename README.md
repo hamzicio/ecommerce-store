@@ -1,21 +1,15 @@
-# Online Shop Application
+# Ecommerce Application
 
-#### A full-stack Online Shop web application using Spring Boot 2 and Angular 7. 
-This is a Single Page Appliaction with client-side rendering. It includes [backend](https://github.com/zhulinn/SpringBoot-Angular7-ShoppingCart/tree/backend) and [frontend](https://github.com/zhulinn/SpringBoot-Angular7-ShoppingCart/tree/frontend) two seperate projects on different branches.
+#### Ecommerce App using Springboot and Angular
+This is a Single Page Appliaction with client-side rendering. It includes frontend and backend directory.
 The frontend client makes API calls to the backend server when it is running.
-> This project is based on my previous project [Online-Shopping-Store](https://github.com/zhulinn/Online-Shopping-Store), which uses FreeMarker as template engine for server-side rendering. 
-> 
-#### Live Demo: [https://springboot-angular-shop.herokuapp.com/](https://springboot-angular-shop.herokuapp.com/) Heroku has removed free tier on Postgres, the demo is no longer working...:(
 
-For Heroku application repo cloning, please check [Angular7-SpringBoot-hybrid-project](https://github.com/zhulinn/Angular7-SpringBoot-hybrid-project).
+#### Live Demo: [https://animated-purpose-production.up.railway.app](https://animated-purpose-production.up.railway.app) Deployed on Railway platform
 
-## Screenshot
-![](https://raw.githubusercontent.com/zhulinn/blog/hexo/source/uploads/post_pics/spring-angular/cart.png)
 
 ## Features
 - REST API
 - Docker
-- Docker Compose
 - JWT authentication
 - Cookie based visitors' shopping cart
 - Persistent customers' shopping cart
@@ -25,6 +19,7 @@ For Heroku application repo cloning, please check [Angular7-SpringBoot-hybrid-pr
 - Order management
 - Pagination
 ## Technology Stacks
+
 **Backend**
   - Java 11
   - Spring Boot 2.2
@@ -32,7 +27,7 @@ For Heroku application repo cloning, please check [Angular7-SpringBoot-hybrid-pr
   - JWT Authentication
   - Spring Data JPA
   - Hibernate
-  - PostgreSQL
+  - MYSQL
   - Maven
 
 **Frontend**
@@ -40,29 +35,26 @@ For Heroku application repo cloning, please check [Angular7-SpringBoot-hybrid-pr
   - Angular CLI
   - Bootstrap
 
-## Database Schema
-
-![](https://raw.githubusercontent.com/zhulinn/blog/hexo/source/uploads/post_pics/spring-angular/db.png)
 
 ## How to  Run
-
-Start the backend server before the frontend client.  
+export env variable PROFILE and set it to dev.
+Start the backend server before the frontend client using mvn spring-boot:run.  
 
 **Backend**
 
-  1. Install [PostgreSQL](https://www.postgresql.org/download/) 
-  2. Configure datasource in `application.yml`.
+  1. Install [MYSQL](https://www.mysql.org/download/) 
+  2. Configure datasource in `application-dev.properties`.
   3. `cd backend`.
-  4. Run `mvn install`.
-  5. Run `mvn spring-boot:run`.
-  6. Spring Boot will import mock data into database by executing `import.sql` automatically.
+  4. export PROFILE=dev
+  5. Run `mvn clean package`.
+  6. Run `mvn spring-boot:run`.
   7. The backend server is running on [localhost:8080]().
 
 **Frontend**
   1. Install [Node.js and npm](https://www.npmjs.com/get-npm)
   2. `cd frontend`.
   3. Run `npm install`.
-  4. Run `ng serve`
+  4. Run `npm run-script dev`
   5. The frontend client is running on [localhost:4200]().
   
 Note: The backend API url is configured in `src/environments/environment.ts` of the frontend project. It is `localhost:8080/api` by default.
@@ -78,13 +70,6 @@ mvn package
 ```bash
 cd frontend
 npm install
-ng build --prod
-```
-3. Build images and run containers
-```bash
-docker-compose up --build
+npm run-script dev
 ```
 
-# ecommerce-store
-# ecommerce-store
-# ecommerce-store
