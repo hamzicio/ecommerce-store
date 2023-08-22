@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://animated-purpose-production.up.railway.app/api",
+    "target": "http://localhost:8080/api",
     "secure": false
   }
 }

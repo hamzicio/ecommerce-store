@@ -2903,7 +2903,7 @@ __webpack_require__.r(__webpack_exports__);
 var environment = {
     production: false
 };
-var apiUrl = 'https://animated-purpose-production.up.railway.app';
+var apiUrl = 'http://localhost:8080';
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

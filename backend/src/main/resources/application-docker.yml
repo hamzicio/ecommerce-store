@@ -2,9 +2,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    username: freedb_roottttt
-    password: tKbtmj&wsW7fUbE
-    url: jdbc:mysql://sql.freedb.tech:3306/freedb_ecommerceapp?createDatabaseIfNotExist=true
+    username: ${MYSQLUSER}
+    password: ${MYSQLPASSWORD}
+    url: jdbc:mysql://${MYSQLHOST}/freedb_ecommerceapp?createDatabaseIfNotExist=true
     platform: mysql
     initialization-mode: always
     continue-on-error: true
